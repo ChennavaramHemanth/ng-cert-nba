@@ -1,0 +1,5 @@
+<select (change)="selectDivision($event)">
+    <option [value]="team.division"  *ngFor="let team of divisions">
+        {{team.division}}
+    </option>
+</select>

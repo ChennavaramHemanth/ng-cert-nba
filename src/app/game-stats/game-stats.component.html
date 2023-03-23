@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-sm-11" *ngIf="allTeams.length">
+    <app-conference-team [allTeams]="allTeams"
+      (filteredItemEvent)="selectConference($event)"></app-conference-team>
+    <app-divisions-team  [divisions]="divisions" (filteredDivisionEvent)="selectDivision($event)" ></app-divisions-team>
+    <select #teamSelect>
+      <option [value]="team.id" *ngFor="let team of filteredTeams">
+        {{team.full_name}}
+      </option>
+    </select>
+    <button class="primary" (click)="trackTeam(teamSelect.value)">Track team</button>
+  </div>
+</div>
+<div class="row">
+  <app-team-stats class="col-sm-4" *ngFor="let team of nbaService.getTrackedTeams()" [team]="team">
+  </app-team-stats>
+</div>
